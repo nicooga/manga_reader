@@ -8,8 +8,8 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
     "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
     "html-webpack-plugin": "^3.2.0",
@@ -22,7 +22,9 @@
     "start": "webpack-dev-server --mode development --config ./webpack.config.js"
   },
   "dependencies": {
+    "final-form": "^4.18.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-final-form-hooks": "^2.0.1"
   }
 }
