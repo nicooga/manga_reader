@@ -1,0 +1,44 @@
+Arguments: 
+  /home/nicolas/.asdf/installs/nodejs/8.9.4/bin/node /home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/bin/yarn add -D webpack babel-loader html-webpack-pugin
+
+PATH: 
+  /home/nicolas/.asdf/installs/nodejs/8.9.4/bin:/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/bin::/home/nicolas/.asdf/shims:/home/nicolas/.asdf/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nicolas/.bin:/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/bin
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.9.4
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/html-webpack-pugin: Not found
+      at Request.params.callback [as _callback] (/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/lib/node_modules/yarn/lib/cli.js:64202:18)
+      at Request.self.callback (/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/lib/node_modules/yarn/lib/cli.js:137468:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/lib/node_modules/yarn/lib/cli.js:138440:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (/home/nicolas/.asdf/installs/nodejs/8.9.4/.npm/lib/node_modules/yarn/lib/cli.js:138362:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
+
+npm manifest: 
+  {
+    "name": "manga-reader-frontend",
+    "version": "0.0.0",
+    "description": "A manga reader frontend APP",
+    "main": "src/index.js",
+    "repository": "https://github.com/nicooga/manga_reader",
+    "author": "Nicolas Oga <2112.oga@gmail.com>",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
