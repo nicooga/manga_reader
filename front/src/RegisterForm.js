@@ -1,5 +1,17 @@
 import React from 'react'
-import { useForm, useField } from 'react-final-form-hooks'
+import styled from 'styled-components'
+import { useForm } from 'react-final-form-hooks'
+
+import Input from './Input'
+import SubmitButton from './SubmitButton'
+
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  padding: 10px;
+`
 
 const RegisterForm = _props => {
   const { form, handleSubmit } =
@@ -7,22 +19,13 @@ const RegisterForm = _props => {
       onSubmit: formData => console.log(formData)
     })
 
-  const { input: emailInput } = useField('email', form)
-  const { input: passwordInput } = useField('password', form)
-
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input {...emailInput} placeholder='Email' id='email'/>
-      </div>
-
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input {...passwordInput} placeholder='Password' type='password' id='password'/>
-      </div>
-
-      <button type='submit'>Register</button>
+      <Root>
+        <Input form={form} name='email' label='Email'/>
+        <Input form={form} name='password' label='Password' type='password'/>
+        <SubmitButton>Register</SubmitButton>
+      </Root>
     </form>
   )
 }

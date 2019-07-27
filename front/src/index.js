@@ -4,8 +4,14 @@ import styled from 'styled-components'
 
 import RegisterForm from './RegisterForm'
 
+const Root = styled.div`
+  font-family: 'Helvetica';
+`
+
 const App = _props => (
-  <RegisterForm />
+  <Root>
+    <RegisterForm />
+  </Root>
 )
 
 ReactDOM.render(<App />, document.getElementById('root'))
