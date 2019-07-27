@@ -21,8 +21,22 @@ const ActualInput = styled.input`
   padding: 3px;
 `
 
-const Input = ({ form, name, label, type }) => {
-  const { input } = useField(name, form)
+const Errors = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+  padding: 7px;
+  font-size: 13px;
+
+  :empty {
+    display: none
+  }
+`
+
+const Error = styled.div``
+
+const Input = ({ form, name, label, type, required }) => {
+  const { input, meta } = useField(name, form)
 
   return (
     <Root>
@@ -32,7 +46,15 @@ const Input = ({ form, name, label, type }) => {
         placeholder={label}
         id={name}
         type={type}
+        required={required}
       />
+      <Errors>
+        {
+          meta.touched && meta.submitError?.map(errorMessage => (
+            <Error>{errorMessage}</Error>
+          ))
+        }
+      </Errors>
     </Root>
   )
 }
