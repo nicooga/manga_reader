@@ -8,9 +8,15 @@
     "graphql": "^14.4.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "nodemon": "^1.19.1"
   },
   "scripts": {
-    "start": "nodemon -w src node src/index.js"
+    "start": "nodemon -w src -x 'babel-node src/index.js'",
+    "build": "babel src --out-dir dist",
+    "serve": "node dist/index.js"
   }
 }

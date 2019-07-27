@@ -1,4 +1,4 @@
-const { ApolloServer, gql, UserInputError } = require('apollo-server');
+import { ApolloServer, gql, UserInputError } from 'apollo-server'
 
 const fakeUsersDB = []
 
