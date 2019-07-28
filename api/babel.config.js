@@ -3,9 +3,7 @@ module.exports = function(api) {
 
   return {
     presets: [
-      ['@babel/preset-env', {
-        targets: {node: 'current'}
-      }]
+      ['@babel/preset-env', {targets: {node: 'current'}}]
     ],
     plugins: [
       ['module-resolver', {
@@ -14,7 +12,8 @@ module.exports = function(api) {
           '@root': '.',
           '@src': './src' 
         }
-      }]
+      }],
+      ["@babel/plugin-proposal-pipeline-operator", {proposal: "minimal"}]
     ]
   }
 }

@@ -1,11 +1,12 @@
 import User from '@src/models/User'
-import handleModelCreate from '@src/handleModelCreate.js'
+import { tryThrowValidationError } from '@src/ErrorHandling.js'
 import { generateToken, hashPassword } from '@src/Auth'
 
 const registerUser = (_root, { input }, _context) => {
   const { password, salt } = hashPassword(input.password)
 
-  return handleModelCreate(User.create({ ...input, password, salt }))
+  return User
+    .create({ ...input, password, salt })
     .then(user => ({
       user: {
         id: user.dataValues.id,
@@ -13,6 +14,7 @@ const registerUser = (_root, { input }, _context) => {
       },
       token: generateToken({ userId: user.dataValues.id })
     }))
+    .catch(tryThrowValidationError)
 }
 
 export default registerUser
