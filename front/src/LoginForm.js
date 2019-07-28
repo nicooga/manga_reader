@@ -10,24 +10,24 @@ import Input from './Input'
 import SubmitButton from './SubmitButton'
 import extractValidationErrors from './extractValidationErrors'
 
-const REGISTER_USER_MUTATION = gql`
-  mutation registerUser($input: RegisterUserInput!) {
-    registerUser(input: $input) {
+const LOGIN_USER_MUTATION = gql`
+  mutation loginUser($input: LoginUserInput!) {
+    loginUser(input: $input) {
       user { email }
       token
     }
   }
 `
 
-const RegisterForm = _props => {
-  const [registerUser] = useMutation(REGISTER_USER_MUTATION)
+const LoginForm = _props => {
+  const [loginUser] = useMutation(LOGIN_USER_MUTATION)
 
-  const { form, handleSubmit } =
+  const { form, handleSubmit } = 
     useForm({
       onSubmit: formData => (
-        registerUser({ variables: { input: formData } })
+        loginUser({ variables: { input: formData } })
           .then(resp => {
-            const { user, token } = resp.data.registerUser
+            const { user, token } = resp.data.loginUser
             setCurrentUser({ user, token })
           })
           .catch(extractValidationErrors)
@@ -38,9 +38,9 @@ const RegisterForm = _props => {
     <Form onSubmit={handleSubmit}>
       <Input form={form} name='email' label='Email' type='email' required />
       <Input form={form} name='password' label='Password' type='password' required />
-      <SubmitButton>Register</SubmitButton>
+      <SubmitButton>Login</SubmitButton>
     </Form>
   )
 }
 
-export default RegisterForm
+export default LoginForm
