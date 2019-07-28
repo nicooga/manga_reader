@@ -27,9 +27,7 @@ const extractValidationErrors = errorData => (
   errorData
     .graphQLErrors
     .find(gqlError => gqlError.extensions.code === 'BAD_USER_INPUT')
-    .extensions
-    .exception
-    .errors
+    ?.extensions.exception.errors
 )
 
 const RegisterForm = _props => {

@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "manga_reader",
+    "password": "manga_reader",
+    "database": "manga_reader_development",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

@@ -3,10 +3,18 @@ module.exports = function(api) {
 
   return {
     presets: [
-      [
-        "@babel/preset-env",
-        {targets: {node: "current"}}
-      ]
+      ["@babel/preset-env", {
+        targets: {node: "current"}
+      }]
+    ],
+    plugins: [
+      ['module-resolver', {
+        root: ["."],
+        alias: {
+          "@root": ".",
+          "@src": "./src" 
+        }
+      }]
     ]
   }
 }
