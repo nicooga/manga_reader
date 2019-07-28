@@ -1,2 +1,7 @@
 import registerUser from './registerUser'
-export default { registerUser }
+import loginUser from './loginUser'
+
+export default {
+  registerUser,
+  loginUser
+}

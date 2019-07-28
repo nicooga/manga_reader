@@ -21,13 +21,19 @@ const typeDefs = gql`
     password: String!
   }
 
-  type RegisterUserOutput {
+  type UserAndToken {
     user: User!,
     token: String!
   }
 
+  input LoginUserInput {
+    email: String!,
+    password: String!
+  }
+
   type Mutation {
-    registerUser(input: RegisterUserInput!): RegisterUserOutput!
+    registerUser(input: RegisterUserInput!): UserAndToken!
+    loginUser(input: LoginUserInput!): UserAndToken!
   }
 
   type Query {
