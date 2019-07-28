@@ -1,3 +1,4 @@
+import ls from 'local-storage'
 import { BehaviorSubject } from 'rxjs'
 import { useObservable } from 'rxjs-hooks'
 import { pluck } from 'rxjs/operators'

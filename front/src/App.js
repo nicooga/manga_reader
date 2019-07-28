@@ -2,9 +2,13 @@ import React  from 'react'
 import styled from 'styled-components'
 
 import { useAppState } from './StateManagement'
+import { initAuthState } from './Auth'
 import ApolloProvider from './ApolloProvider'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
+import LogoutButton from './LogoutButton'
+
+initAuthState()
 
 const Root = styled.div`
   font-family: 'Helvetica';
@@ -27,19 +31,23 @@ const App = _props => {
   return (
     <ApolloProvider>
       <Root>
-        {currentUser ? `Welcome ${currentUser.email}` : (
-          <AuthBox>
-            <div>
-              You have an account? Then login
-              <LoginForm />
-            </div>
+        {
+          currentUser ? (
+            <LogoutButton />
+          ) : (
+            <AuthBox>
+              <div>
+                You have an account? Then login
+                <LoginForm />
+              </div>
 
-            <div>
-              You are new around here? Please register
-              <RegisterForm />
-            </div>
-          </AuthBox>
-        )}
+              <div>
+                You are new around here? Please register
+                <RegisterForm />
+              </div>
+            </AuthBox>
+          )
+        }
       </Root>
     </ApolloProvider>
   )
