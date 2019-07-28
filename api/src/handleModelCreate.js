@@ -10,19 +10,19 @@ const extractValidationErrors = error => (
 
 const tryExtractValidationErrors = error => {
   if (
-    error.message === 'Validation Error' ||
+    error.name === 'SequelizeValidationError' ||
     error.name === 'SequelizeUniqueConstraintError'
   ) {
     throw new UserInputError(
       'Validation Error',
       { errors: extractValidationErrors(error) }
     )
+  } else {
+    console.log(error)
+    return Promise.reject(error)
   }
 }
 
-const handleModelCreate = promise =>
-  promise
-    .then(record => record.dataValues)
-    .catch(tryExtractValidationErrors)
+const handleModelCreate = promise => promise.catch(tryExtractValidationErrors)
 
 export default handleModelCreate

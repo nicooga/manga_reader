@@ -2,14 +2,8 @@ import { gql } from 'apollo-server'
 
 const typeDefs = gql`
   type User {
+    id: ID!,
     email: String
-  }
-
-  type Mutation {
-    registerUser(
-      email: String!,
-      password: String!
-    ): User
   }
 
   type Manga {
@@ -20,6 +14,20 @@ const typeDefs = gql`
 
   type MangaPage {
     pictureUrl: String
+  }
+
+  input RegisterUserInput {
+    email: String!,
+    password: String!
+  }
+
+  type RegisterUserOutput {
+    user: User!,
+    token: String!
+  }
+
+  type Mutation {
+    registerUser(input: RegisterUserInput!): RegisterUserOutput!
   }
 
   type Query {

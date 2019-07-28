@@ -3,11 +3,15 @@ import styled from 'styled-components'
 import { useForm } from 'react-final-form-hooks'
 import gql from 'graphql-tag'
 import { useMutation } from 'react-apollo-hooks'
+import { setCurrentUser } from './Auth'
 
 const REGISTER_USER_MUTATION = gql`
-  mutation registerUser($email: String!, $password: String!) {
-    registerUser(email: $email, password: $password) {
-      email
+  mutation registerUser($input: RegisterUserInput!) {
+    registerUser(input: $input) {
+      user {
+        email
+      }
+      token
     }
   }
 `
@@ -36,14 +40,13 @@ const RegisterForm = _props => {
   const { form, handleSubmit } =
     useForm({
       onSubmit: formData => (
-        registerUser({ variables: formData })
-          .then(_ => alert('Welcome to MangaReader'))
+        registerUser({ variables: { input: formData } })
+          .then(resp => {
+            const { user, token } = resp.data.registerUser
+            setCurrentUser({ user, token })
+          })
           .catch(extractValidationErrors)
-      ),
-      initialValues: {
-        email: '2112.oga@gmail.com',
-        password: '123123'
-      }
+      )
     })
 
   return (
