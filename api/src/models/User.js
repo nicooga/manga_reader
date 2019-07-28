@@ -11,7 +11,12 @@ User.init({
 
   password: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: true,
+  },
+
+  salt: {
+    type: Sequelize.STRING,
+    allowNull: true,
   }
 }, { sequelize })
 
