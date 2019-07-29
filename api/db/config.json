@@ -5,5 +5,13 @@
     "database": "manga_reader_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "manga_reader",
+    "password": "manga_reader",
+    "database": "manga_reader_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
   }
 }

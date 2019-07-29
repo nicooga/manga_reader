@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 import secret from '@src/secret'
 
-const generateToken = (userId, payload) => jwt.sign({ userId, ...payload }, secret)
+const generateToken = payload => jwt.sign(payload, secret)
 
 const createSalt = _ => rand(120, 32)
 
