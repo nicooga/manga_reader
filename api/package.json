@@ -28,6 +28,7 @@
     "start": "nodemon -w src -x 'babel-node src/index.js'",
     "build": "babel src --out-dir dist",
     "serve": "node dist/index.js",
-    "test": "jest --watch"
+    "test:watch": "yarn test --watch",
+    "test": "jest --runInBand"
   }
 }

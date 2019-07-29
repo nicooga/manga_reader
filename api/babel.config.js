@@ -10,7 +10,8 @@ module.exports = function(api) {
         root: ['.'],
         alias: {
           '@root': '.',
-          '@src': './src' 
+          '@src': './src',
+          '@jest': './jest'
         }
       }],
       ["@babel/plugin-proposal-pipeline-operator", {proposal: "minimal"}]
