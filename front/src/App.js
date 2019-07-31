@@ -3,7 +3,7 @@ import 'normalize.css'
 import React, { useLayoutEffect }  from 'react'
 import styled from 'styled-components'
 
-import { useAppState } from './StateManagement'
+import stateManager from './stateManager'
 import { initAuthState } from './Auth'
 import ApolloProvider from './ApolloProvider'
 import AuthPage from './pages/AuthPage'
@@ -14,9 +14,10 @@ const Root = styled.div`
 `
 
 const App = _props => {
-  const currentUser = useAppState('currentUser')
+  const [currentUser, __cacheInitialized] =
+    stateManager.useAppState('currentUser', '__cacheInitialized')
 
-  useLayoutEffect(_ => { initAuthState() })
+  if (!__cacheInitialized) return null
 
   return (
     <ApolloProvider>
