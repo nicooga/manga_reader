@@ -9,16 +9,13 @@ const loginUser = (_root, { input }, _context) => (
       where: { email: input.email }
     })
     .then(user => {
-      if (!user)
-        throwValidationError({ email: ['does not correspond to an existing user'] })
+      if (!user) throwValidationError({ email: ['does not correspond to an existing user'] })
+      if (!isPasswordMatch(user, input.password)) throwValidationError({ password: ['does not match'] })
 
-      if (isPasswordMatch(user, input.password)) {
-        return {
-          token: generateToken({ userId: user.dataValues.id }),
-          user: user.dataValues
-        }
-      } else
-        throwValidationError({ password: ['does not match'] })
+      return {
+        token: generateToken({ userId: user.id }),
+        user: user
+      }
     })
 )
 

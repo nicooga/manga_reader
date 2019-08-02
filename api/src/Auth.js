@@ -1,8 +1,4 @@
 import crypto from 'crypto'
-import rand from 'csprng'
-import jwt from 'jsonwebtoken'
-
-import secret from '@src/secret'
 
 const generateToken = payload => jwt.sign(payload, secret)
 

@@ -1,0 +1,43 @@
+type User {
+  id: ID!,
+  email: String
+  admin: Boolean
+}
+
+type Manga {
+  id: ID!,
+  arc: String,
+  chapter: Int,
+  title: String
+  pages: [MangaPage]
+}
+
+type MangaPage {
+  id: ID!
+  manga: Manga!
+  pictureUrl: String!
+}
+
+input RegisterUserInput {
+  email: String!,
+  password: String!
+}
+
+type UserAndToken {
+  user: User!,
+  token: String!
+}
+
+input LoginUserInput {
+  email: String!,
+  password: String!
+}
+
+type Mutation {
+  registerUser(input: RegisterUserInput!): UserAndToken!
+  loginUser(input: LoginUserInput!): UserAndToken!
+}
+
+type Query {
+  mangas: [Manga]
+}

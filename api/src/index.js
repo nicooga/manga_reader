@@ -1,5 +1,5 @@
-import MangaReaderServer from './MangaReaderServer'
+import Server from './Server'
 
 const PORT = process.env.port || 4000
 
-MangaReaderServer.listen(PORT).then(({ url }) => console.log(`🚀  Server ready at ${url}`))
+Server.listen(PORT).then(({ url }) => console.log(`🚀  Server ready at ${url}`))
