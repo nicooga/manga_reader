@@ -6,6 +6,7 @@ module.exports = function(api) {
       ['@babel/preset-env', {targets: {node: 'current'}}]
     ],
     plugins: [
+      '@babel/plugin-proposal-do-expressions',
       ['module-resolver', {
         root: ['.'],
         alias: {
@@ -14,7 +15,7 @@ module.exports = function(api) {
           '@jest': './jest'
         }
       }],
-      ["@babel/plugin-proposal-pipeline-operator", {proposal: "minimal"}]
+      ['@babel/plugin-proposal-pipeline-operator', {proposal: 'minimal'}],
     ]
   }
 }
