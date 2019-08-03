@@ -1,9 +1,9 @@
 import { Sequelize, sequelize } from '@src/db'
-import MangaChapter from '@scr/models/MangaChapter'
+import MangaChapter from '@src/models/MangaChapter'
 
 class MangaSeries extends Sequelize.Model {}
 
-MangaSeries.hasMany(MangaChapter)
+//MangaSeries.hasMany(MangaChapter)
 
 MangaSeries.init({
   author: {

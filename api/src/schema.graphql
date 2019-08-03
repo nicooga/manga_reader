@@ -13,7 +13,7 @@ type MangaSeries {
 
 type MangaChapter {
   id: ID!,
-  mangaSeries: MangaSeries!
+  series: MangaSeries!
   chapterNumber: Int!
   pages: [MangaPage]
 }
@@ -21,7 +21,7 @@ type MangaChapter {
 type MangaPage {
   id: ID!
   chapter: MangaChapter!
-  pictureUrl: String!
+  picture: String!
 }
 
 input RegisterUserInput {
@@ -44,7 +44,7 @@ input CreateMangaChapterInput {
   mangaSeriesAuthor: String
   mangaSeriesTitle: String
   chapterNumber: Int!
-  pictures: [String]
+  pictures: [String!]!
 }
 
 type Mutation {
@@ -54,5 +54,6 @@ type Mutation {
 }
 
 type Query {
-  mangas: [Manga]
+  mangaSeries: [MangaSeries]!
+  mangaChapters: [MangaChapter]!
 }

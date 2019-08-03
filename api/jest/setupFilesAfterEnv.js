@@ -1,20 +1,27 @@
 import { sequelize } from '@src/db'
 
-const truncate = table => sequelize.query(`DELETE FROM "${table}"`)
+const truncate = table => sequelize.query(`TRUNCATE "${table}" RESTART IDENTITY CASCADE`)
 
-const truncateAll = _ => (
-  sequelize
-    .query(`
-      SELECT * FROM pg_catalog.pg_tables
-      WHERE schemaname = 'public'
-      AND tablename != 'SequelizeMeta'
-    `)
-    .then(([results]) => Promise.all(results.map(r => truncate(r.tablename))))
-    .catch((...args) => {
-      console.log('Error while truncanting tables', args)
-      return Promise.reject(...args)
-    })
-)
+const truncateAll = async _ => {
+  try {
+    const [results] =
+      await sequelize.query(`
+        SELECT * FROM pg_catalog.pg_tables
+        WHERE schemaname = 'public'
+        AND tablename != 'SequelizeMeta'
+      `)
 
-global.beforeEach(done => truncateAll().then(_ => done()).catch(done))
-global.afterAll(() => sequelize.close())
+    return await Promise.all(results.map(r => truncate(r.tablename)))
+  } catch(error) {
+    console.log('Error while truncanting tables', error)
+    return Promise.reject(error)
+  }
+}
+
+global.beforeEach(async done => {
+  try { await truncateAll() } finally { done() }
+})
+
+global.afterAll(async done => {
+  try { await sequelize.close() } finally { done() }
+})

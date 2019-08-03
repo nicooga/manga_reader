@@ -4,12 +4,16 @@ import MangaPage from '@src/models/MangaPage'
 
 class MangaChapter extends Sequelize.Model {}
 
-MangaChapter.belongsTo(MangaSeries)
-MangaChapter.hasMany(MangaPage)
+//MangaChapter.belongsTo(MangaSeries)
+//MangaChapter.hasMany(MangaPage)
 
 MangaChapter.init({
+  mangaSeriesId: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   chapterNumber: {
-    Sequelize.INTEGER,
+    type: Sequelize.INTEGER,
     allowNull: false,
     unique: true
   }
