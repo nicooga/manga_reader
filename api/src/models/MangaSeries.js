@@ -3,8 +3,6 @@ import MangaChapter from '@src/models/MangaChapter'
 
 class MangaSeries extends Sequelize.Model {}
 
-//MangaSeries.hasMany(MangaChapter)
-
 MangaSeries.init({
   author: {
     type: Sequelize.STRING,

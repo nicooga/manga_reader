@@ -1,4 +1,6 @@
 import crypto from 'crypto'
+import jwt from 'jsonwebtoken'
+import secret  from '@src/secret'
 
 const generateToken = payload => jwt.sign(payload, secret)
 

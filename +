@@ -1,0 +1,5 @@
+import { sequelize } from '@src/db'
+import { truncateAll } from '@jest/helpers'
+
+before(() => truncateAll())
+after(() => sequelize.close())
