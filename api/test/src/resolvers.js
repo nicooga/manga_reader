@@ -18,7 +18,7 @@ const expectToResolveWithBA = (resolverPath, ba) => {
 
     // We need to reload the module because it uses resolveWithBA at definition time,
     // before it can be mocked for testing
-    const resolvers = reload('@src/resolvers/index.js')
+    const resolvers = reload('@src/resolvers.js')
     const resolver = get(resolvers.default, resolverPath)
 
     expect(resolver).to.equal(randomFn)
